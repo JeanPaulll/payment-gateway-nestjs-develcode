@@ -42,9 +42,9 @@ Para mais detalhes sobre o microsserviço de Checkout, visite o repositório (Ja
 
 ## **Tecnologias Utilizadas**
 
-- **Node.js (v16+)**: Plataforma para execução de JavaScript no lado do servidor.
-- **NestJS**: Framework para a construção de APIs escaláveis em Node.js, com arquitetura modular e suporte a injeção de dependência.
-- **TypeScript**: Linguagem tipada para garantir maior robustez e previsibilidade no código.
+- **Node.js (v16+)**
+- **NestJS**
+- **TypeScript**
 - **PostgreSQL**: Banco de dados relacional usado para persistir as informações de pedidos e transações (simulado neste serviço).
 - **Docker**: Ferramenta de conteinerização usada para criar um ambiente isolado para a aplicação.
 - **Swagger**: Ferramenta para documentação interativa da API.
@@ -103,7 +103,7 @@ Isso irá construir a imagem Docker e rodar o serviço em um contêiner. A API e
 
 ## **Documentação da API com Swagger**
 
-A API utiliza **Swagger** para fornecer documentação interativa. Você pode acessar a documentação do Swagger via:
+A API utiliza **Swagger** para fornecer documentação interativa. Você pode acessar a documentação do Swagger via: http://localhost:3000/api/docs
 
 ### **Endpoints Principais**
 
@@ -132,19 +132,7 @@ A API utiliza **Swagger** para fornecer documentação interativa. Você pode ac
         "status": "FALHA"
       }
       ```
-## **Arquitetura Hexagonal**
-
-Este projeto segue o padrão de **Arquitetura Hexagonal** (também conhecido como **Ports and Adapters**), que separa a lógica de negócio da infraestrutura, permitindo maior flexibilidade, independência de frameworks e fácil substituição de adaptadores (como gateways de pagamento).
-
-### **Domínio**
-O domínio contém as regras de negócio e serviços principais. O serviço de pagamento (`PaymentService`) é responsável por coordenar o processamento de pagamentos, sem depender diretamente de detalhes de implementação, como um gateway de pagamento.
-
-### **Portas**
-As portas definem interfaces para as interações externas. No caso deste projeto, temos a interface `PaymentGatewayPort`, que abstrai o processo de comunicação com gateways de pagamento.
-
-### **Adaptadores**
-Os adaptadores implementam as portas. O `ExternalPaymentGatewayAdapter` é um exemplo de adaptador que simula a comunicação com um gateway de pagamento.
-
+      
 ### Contato
 
 - Autor: Jean Paul
@@ -154,5 +142,5 @@ Os adaptadores implementam as portas. O `ExternalPaymentGatewayAdapter` é um ex
 
 ### Evidências
 
-![Projeto 1](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/prints/1.png)
-![Projeto 2](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/prints/2.png)
+![Projeto 1](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/refs/heads/master/prints/1.png)
+![Projeto 2](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/refs/heads/master/prints/2.png)
