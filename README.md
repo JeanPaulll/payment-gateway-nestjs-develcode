@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center"></p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -22,64 +22,137 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# **Payment Gateway API (Node.js - NestJS)**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este projeto foi desenvolvido como parte de um teste técnico para uma vaga de desenvolvedor na [DevelCode](https://www.develcode.com.br/).
 
-## Project setup
+A **Payment Gateway API** é um microsserviço de processamento de pagamentos desenvolvido utilizando **Node.js** com o framework **NestJS**. Este serviço é responsável por simular o processamento de pagamentos de pedidos, retornando o status da transação (sucesso ou falha). A API foi desenvolvida com **Arquitetura Hexagonal (Ports and Adapters)**, garantindo flexibilidade e independência de infraestrutura.
+
+Para mais detalhes sobre o microsserviço de Checkout, visite o repositório (Java - Spring Framework):
+- https://github.com/JeanPaulll/checkout-ms-java-develcode
+
+
+### **Funcionalidades Principais**
+- Processar transações de pagamento e retornar o status da operação.
+- Suporte para diferentes gateways de pagamento através de adaptadores.
+- Arquitetura escalável e flexível com separação clara entre domínio e infraestrutura.
+- Suporte para integração com Docker para facilidade de deploy e desenvolvimento.
+
+---
+
+## **Tecnologias Utilizadas**
+
+- **Node.js (v16+)**: Plataforma para execução de JavaScript no lado do servidor.
+- **NestJS**: Framework para a construção de APIs escaláveis em Node.js, com arquitetura modular e suporte a injeção de dependência.
+- **TypeScript**: Linguagem tipada para garantir maior robustez e previsibilidade no código.
+- **PostgreSQL**: Banco de dados relacional usado para persistir as informações de pedidos e transações (simulado neste serviço).
+- **Docker**: Ferramenta de conteinerização usada para criar um ambiente isolado para a aplicação.
+- **Swagger**: Ferramenta para documentação interativa da API.
+- **Arquitetura Hexagonal (Ports and Adapters)**: Padrão de arquitetura que separa a lógica de negócio (domínio) das interações com o mundo externo (infraestrutura), facilitando a manutenção e escalabilidade.
+
+---
+
+## **Estrutura do Projeto**
+
+O projeto segue a **Arquitetura Hexagonal (Ports and Adapters)**, com separação clara entre o domínio, casos de uso, e adaptadores externos.
+
+---
+
+## **Setup do Projeto**
+
+### **Pré-requisitos**
+- **Node.js v16+**
+- **Docker**: Para rodar o projeto com Docker
+
+### **Passo a Passo para Rodar o Projeto Localmente**
+
+#### **1. Clonar o Repositório**
+Clone o repositório em sua máquina local:
 
 ```bash
-$ npm install
+git clone https://github.com/JeanPaulll/payment-gateway-nestjs-develcode
+cd payment-gateway-nestjs-develcode
 ```
 
-## Compile and run the project
+#### **2. Instalar as Dependências**
+
+Use **npm** ou **yarn** para instalar as dependências do projeto:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+#### **3. Rodar o Projeto Localmente**
+
+Para rodar a aplicação localmente em desenvolvimento:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start
 ```
 
-## Resources
+A aplicação estará disponível em http://localhost:3000.
 
-Check out a few resources that may come in handy when working with NestJS:
+#### **4. Rodar com Docker**
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Se preferir rodar com Docker, certifique-se de que o Docker está instalado e execute:
 
-## Support
+```bash
+docker-compose up --build
+```
+Isso irá construir a imagem Docker e rodar o serviço em um contêiner. A API estará disponível em http://localhost:3000.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## **Documentação da API com Swagger**
 
-## Stay in touch
+A API utiliza **Swagger** para fornecer documentação interativa. Você pode acessar a documentação do Swagger via:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### **Endpoints Principais**
 
-## License
+- **`POST /payments`**: Processa um pagamento.
+    - **Corpo da Requisição**:
+      ```json
+      {
+        "orderId": 12345,
+        "amount": 150.00
+      }
+      ```
+    - **Resposta de Sucesso**:
+      ```json
+      {
+        "success": true,
+        "message": "Pagamento realizado com sucesso",
+        "status": "SUCESSO"
+      }
+      ```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+    - **Resposta de Falha**:
+      ```json
+      {
+        "success": false,
+        "message": "Pagamento falhou",
+        "status": "FALHA"
+      }
+      ```
+## **Arquitetura Hexagonal**
+
+Este projeto segue o padrão de **Arquitetura Hexagonal** (também conhecido como **Ports and Adapters**), que separa a lógica de negócio da infraestrutura, permitindo maior flexibilidade, independência de frameworks e fácil substituição de adaptadores (como gateways de pagamento).
+
+### **Domínio**
+O domínio contém as regras de negócio e serviços principais. O serviço de pagamento (`PaymentService`) é responsável por coordenar o processamento de pagamentos, sem depender diretamente de detalhes de implementação, como um gateway de pagamento.
+
+### **Portas**
+As portas definem interfaces para as interações externas. No caso deste projeto, temos a interface `PaymentGatewayPort`, que abstrai o processo de comunicação com gateways de pagamento.
+
+### **Adaptadores**
+Os adaptadores implementam as portas. O `ExternalPaymentGatewayAdapter` é um exemplo de adaptador que simula a comunicação com um gateway de pagamento.
+
+### Contato
+
+- Autor: Jean Paul
+- LinkedIn: https://www.linkedin.com/in/jeanpaull/
+- Email: jeanpaulwebb@gmail.com
+
+
+### Evidências
+
+![Projeto 1](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/prints/1.png)
+![Projeto 2](https://raw.githubusercontent.com/JeanPaulll/payment-gateway-nestjs-develcode/prints/2.png)
